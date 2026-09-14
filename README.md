@@ -19,6 +19,8 @@ Accordingly, this repository distinguishes:
 - **exact rank claims** — strong and fragile under finite sampling;
 - **forced cutoff claims** — can overcompress when a method must choose a cutoff;
 - **resolved-mode claims** — a conservative one-sided statement: *at least these modes are supported by the data*.
+- **partition claims** — whether a specified aggregation is dynamically closed,
+  which is not determined by spectral rank alone.
 
 ## What survived the stress tests
 
@@ -111,6 +113,24 @@ At 5,000 samples per row, the median resolved fraction was:
 
 This is **not a formal confidence bound**. It is a benchmarked conservative diagnostic.
 
+### 5. Triadic controls separate rank from macro-partition validity
+
+A 48-state triadic system supplies exact partitions and symmetries that can be
+checked independently of the spectrum. Three complementary controls show:
+
+- an orthogonal rotation can preserve every singular value while breaking the
+  exact closure of a designated eight-family partition;
+- a full-rank heat-kernel TPM can admit the exact nested Markov hierarchy
+  \(48\rightarrow8\rightarrow2\);
+- `r_resolved` ranges from 1 to 48 as diffusion time and sample size change,
+  while that exact hierarchy remains fixed;
+- partition recovery, exact closure, and predictive usefulness can disagree,
+  even when the requested number of groups is supplied.
+
+These controls do not identify a unique preferred macroscale and do not claim
+that exact lumpability is equivalent to causal emergence. See
+[`docs/TRIADIC_CONTROLS.md`](docs/TRIADIC_CONTROLS.md).
+
 ## Reproduce
 
 Python 3.11+ is recommended.
@@ -125,6 +145,12 @@ pip install -r requirements.txt
 
 python src/final_emergence_stress_benchmark.py
 python scripts/make_figures.py
+
+python src/triadic_partition_recovery.py --output results/triadic
+python src/triadic_exact_hierarchy.py --output results/triadic
+python src/triadic_blind_discovery.py --output results/triadic
+PYTHONPATH=src python -m unittest discover -s tests -p 'test_triadic_*.py'
+python scripts/make_triadic_figure.py
 ```
 
 The main run regenerates the CSVs in the working directory. The committed `results/` directory contains the reference outputs used in this release.
@@ -137,23 +163,32 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 ├── LICENSE
 ├── requirements.txt
 ├── src/
-│   └── final_emergence_stress_benchmark.py
+│   ├── final_emergence_stress_benchmark.py
+│   ├── triadic_partition_recovery.py
+│   ├── triadic_exact_hierarchy.py
+│   └── triadic_blind_discovery.py
 ├── scripts/
-│   └── make_figures.py
+│   ├── make_figures.py
+│   └── make_triadic_figure.py
 ├── results/
 │   ├── final_benchmark_representation_invariance.csv
 │   ├── final_benchmark_all_results.csv
 │   ├── final_benchmark_lowrank_summary.csv
 │   ├── final_benchmark_fullrank_summary.csv
-│   └── final_benchmark_publication_endpoints.csv
+│   ├── final_benchmark_publication_endpoints.csv
+│   └── triadic/
 ├── assets/
 │   ├── fig1_representation_refinement.png
 │   ├── fig2_lowrank_resolved_fraction.png
-│   └── fig3_fullrank_resolved_modes.png
+│   ├── fig3_fullrank_resolved_modes.png
+│   └── fig4_triadic_resolved_modes.png
 ├── docs/
 │   ├── METHODS.md
 │   ├── RESULTS.md
-│   └── CLAIMS_AND_LIMITATIONS.md
+│   ├── CLAIMS_AND_LIMITATIONS.md
+│   └── TRIADIC_CONTROLS.md
+├── tests/
+│   └── test_triadic_*.py
 ├── archive/
 │   └── EXPLORATORY_HISTORY.md
 └── references.bib
@@ -173,12 +208,17 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 
 ![Full-rank resolved modes](assets/fig3_fullrank_resolved_modes.png)
 
+### Fixed exact hierarchy, varying resolved dimension
+
+![Triadic resolved modes](assets/fig4_triadic_resolved_modes.png)
+
 ## Scope
 
 The current benchmark is deliberately small and controlled:
 
 - finite-state Markov chains;
-- observed dimension `N = 16`;
+- observed dimensions `N = 16` in the original benchmark and `N = 48` in the
+  triadic controls;
 - stratified row-wise transition sampling;
 - synthetic ground truth;
 - no claim of universal optimality for `r_resolved`.
@@ -207,13 +247,16 @@ It does not claim that:
 - Effective Information is invalid;
 - `r_resolved` is a finished estimator of causal emergence;
 - equal state cloning must be regarded as physically equivalent in every modeling context;
-- spectral rank alone determines whether a macroscale is scientifically meaningful.
+- spectral rank alone determines whether a macroscale is scientifically meaningful;
+- exact lumpability implies positive causal emergence;
+- a valid macro-partition is unique;
+- the exploratory clustering baseline represents all discovery methods.
 
 The claim is narrower: **finite-data inference requires more caution than exact-TPM definitions alone reveal.**
 
 ## Status
 
-**Research benchmark / technical note — v1.0**
+**Research benchmark / technical note — v1.1**
 
 The repository intentionally excludes exploratory results that failed later controls. See [`archive/EXPLORATORY_HISTORY.md`](archive/EXPLORATORY_HISTORY.md) for the methodological history.
 

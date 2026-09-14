@@ -171,3 +171,48 @@ r_{\mathrm{true}}=r_{\mathrm{resolved}}.
 Random seeds are fixed in the source code.
 
 Reference outputs are committed under `results/`.
+
+## 10. Triadic isospectral control
+
+The triadic family contains 48 states grouped into eight designated families
+of six orderings. Product-form TPMs \(P_\eta=Q\otimes R_\eta\) make that
+partition exactly lumpable. A small orthogonal conjugation preserves all
+singular values but couples a family-level direction to a within-family
+direction, breaking closure of the designated partition.
+
+Closure is evaluated directly through
+
+\[
+P\Pi=\Pi\bar P,
+\]
+
+using both maximum-entry and worst-row total-variation residuals.
+
+## 11. Full-rank exact hierarchy
+
+The 48 triadic states form the Cayley graph
+\(Q_3\mathbin{\square}K_{3,3}\). For graph Laplacian \(L\), the population
+dynamics are defined explicitly as
+
+\[
+P_\tau=\exp(-\tau L).
+\]
+
+Integer identities at the generator level verify exact eight-state and
+two-state quotients. Because the eigenvalues of \(P_\tau\) are
+\(\exp(-\tau\lambda_i(L))>0\) for finite \(\tau\), its algebraic rank is 48.
+
+Finite transitions are sampled row-wise and evaluated with the same
+cross-split resolved-mode diagnostic used in the original benchmark.
+
+## 12. Partition-discovery baselines
+
+The known-\(k\) baseline clusters a spectral embedding of an empirical training
+TPM and freezes the resulting partition before evaluating independent test
+counts. Hidden family labels and population closure are evaluator-only.
+
+The exploratory blind baseline searches \(k=2,\ldots,12\), selects the largest
+non-trivial raw eigengap of the symmetrized training TPM, and then clusters the
+leading embedding. Oracle-\(k\) runs distinguish model-order selection from
+partition recovery. This baseline was designed after inspection of the exact
+hierarchy and is not preregistered or claimed to be optimal.

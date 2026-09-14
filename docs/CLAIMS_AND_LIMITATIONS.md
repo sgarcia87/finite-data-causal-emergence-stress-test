@@ -18,6 +18,21 @@ A procedure that is constructed to return some internal cutoff does not establis
 
 The cross-split diagnostic provides positive evidence for some modes without interpreting unresolved modes as absent.
 
+### Claim 5 — spectrum does not certify a designated partition
+
+Two TPMs can have the same singular values while a fixed partition is exactly
+lumpable for one and not for the other.
+
+### Claim 6 — full rank and exact macro-dynamics can coexist
+
+A full-rank 48-state heat-kernel TPM admits the exact nested Markov hierarchy
+\(48\rightarrow8\rightarrow2\).
+
+### Claim 7 — resolved dimension is not macrostate cardinality
+
+The number of resolved spectral modes changes with observation time and sample
+size while the exact triadic hierarchy remains unchanged.
+
 ## Claims explicitly *not* supported
 
 This repository does not establish that:
@@ -27,7 +42,11 @@ This repository does not establish that:
 - `r_resolved` is a formal confidence lower bound;
 - `r_resolved` is optimal;
 - all physical refinements that look like state cloning are scientifically equivalent;
-- spectral redundancy alone is sufficient for a scientifically useful macroscale.
+- spectral redundancy alone is sufficient for a scientifically useful macroscale;
+- exact lumpability implies positive causal emergence;
+- a valid macro-partition is unique;
+- the exploratory triadic clustering baseline represents all possible
+  macrostate-discovery methods.
 
 ## Statistical limitations
 
@@ -38,10 +57,12 @@ A formal treatment would require a statistical theory for singular/eigenvalue in
 ## Benchmark limitations
 
 - synthetic TPMs;
-- fixed observed dimension \(N=16\);
+- observed dimensions \(N=16\) and \(N=48\) in the two benchmark components;
 - row-stratified sampling;
 - a small set of full-rank control families;
-- no real-world dataset in the final claim.
+- no real-world dataset in the final claim;
+- one highly symmetric 48-state construction in the triadic extension;
+- no theorem of blind macro-partition identifiability.
 
 ## Why failed exploratory tests are not headline results
 
