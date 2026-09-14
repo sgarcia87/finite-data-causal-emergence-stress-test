@@ -22,6 +22,12 @@ Accordingly, this repository distinguishes:
 - **partition claims** — whether a specified aggregation is dynamically closed,
   which is not determined by spectral rank alone.
 
+## Interactive visualization
+
+Explore the exact triadic geometry, its **48 → 8 → 2** hierarchy, finite-sample resolved modes, and the isospectral control:
+
+### [Open the Triadic Geometry Lab](https://sgarcia87.github.io/finite-data-causal-emergence-stress-test/)
+
 ## What survived the stress tests
 
 ### 1. Behavior-preserving refinement can change `clear CE`
