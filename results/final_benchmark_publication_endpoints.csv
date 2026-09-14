@@ -1,0 +1,4 @@
+samples_per_row,lowrank_clear_CE_detection,lowrank_loggap_exact,lowrank_elbow_exact,lowrank_svht_exact,lower_bound_valid_all_families,lowrank_median_resolved_fraction,fullrank_loggap_false_compression,fullrank_elbow_false_compression,fullrank_svht_false_compression,fullrank_median_resolved_lower_bound
+100,0.0,0.04888888888888889,0.3088888888888889,0.20666666666666667,1.0,0.625,1.0,1.0,1.0,3.0
+500,0.0,0.10444444444444445,0.3111111111111111,0.36444444444444446,1.0,0.75,1.0,1.0,1.0,4.0
+5000,0.0,0.30666666666666664,0.2688888888888889,0.5555555555555556,1.0,1.0,1.0,1.0,1.0,4.0

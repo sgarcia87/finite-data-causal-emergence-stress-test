@@ -1,0 +1,222 @@
+# Finite-Data Stress Tests for Spectral Causal Emergence
+
+A reproducible benchmark for a narrow question:
+
+> **What can finite transition data actually support about spectral/rank-based causal-emergence claims?**
+
+This repository does **not** propose a new theory of causal emergence and does **not** claim to refute SVD-based causal emergence. It stress-tests the inferential step between an ideal transition probability matrix (TPM) and claims made from a TPM estimated with finite data.
+
+The benchmark was motivated by the SVD-based framework of Zhang et al. (2025), where **clear causal emergence** occurs when `rank(P) < N` and **vague causal emergence** treats small singular values as approximately redundant.
+
+## Main result
+
+The experiments consistently support an **asymmetry of inference**:
+
+> **Finite data can provide positive evidence that some dynamical modes are resolved more safely than they can provide negative evidence that weaker modes are absent.**
+
+Accordingly, this repository distinguishes:
+
+- **exact rank claims** — strong and fragile under finite sampling;
+- **forced cutoff claims** — can overcompress when a method must choose a cutoff;
+- **resolved-mode claims** — a conservative one-sided statement: *at least these modes are supported by the data*.
+
+## What survived the stress tests
+
+### 1. Behavior-preserving refinement can change `clear CE`
+
+For 150 random full-rank 4-state Markov chains, each state was replaced by four behaviorally identical clones.
+
+The expanded 16-state chain is exactly lumpable back to the original chain:
+
+- maximum lumping error: **0**
+- median absolute change in Effective Information: **2.64e-16 bits**
+- original chains classified as clear CE: **0 / 150**
+- equally cloned representations classified as clear CE: **150 / 150**
+
+The dynamics are operationally unchanged under the exact lumping, while the rank-based clear-CE status changes because `N` changes and the redundant refinement lowers `rank(P)/N`.
+
+This is a **representation-sensitivity result**, not a claim that the refinement should or should not philosophically count as emergence.
+
+### 2. Exact empirical rank is fragile under finite sampling
+
+The population TPMs in the low-rank benchmark have exact algebraic ranks 2, 4, or 8, embedded in a 16-state observed space.
+
+Yet finite multinomial estimation generically produces a full-rank empirical TPM. In the final benchmark, direct empirical `clear CE` detection is **0%** across the tested low-rank families at 100, 500, and 5,000 samples per row.
+
+### 3. A cutoff locator is not a test that a meaningful cutoff exists
+
+Three simple spectral baselines were included:
+
+- largest log singular-value gap;
+- linear scree elbow;
+- a generic square-matrix SVHT baseline.
+
+They are useful stress baselines, **not** presented as official procedures from Zhang et al. or as TPM-specific optimal estimators.
+
+At 5,000 samples per row, exact-rank recovery aggregated over true ranks 2/4/8 was:
+
+| Method | Exact-rank recovery |
+|---|---:|
+| largest log gap | 30.7% |
+| linear scree elbow | 26.9% |
+| generic SVHT baseline | 55.6% |
+
+On the full-rank controls used here, these forced-compression rules selected an internal lower rank throughout the benchmark. This demonstrates a methodological point:
+
+> A method that is required to locate a cutoff cannot, by itself, establish that a meaningful cutoff exists.
+
+### 4. One-sided resolved-mode claims are more conservative
+
+The benchmark includes an experimental cross-split diagnostic, `r_resolved`.
+
+For repeated random splits of finite transition counts:
+
+\[
+D = \frac{\hat P_A-\hat P_B}{2}
+\]
+
+\[
+G = \frac{\hat P_A^\top\hat P_B+\hat P_B^\top\hat P_A}{2}
+\]
+
+The split-discrepancy scale is:
+
+\[
+n = \lambda_{\max}(D^\top D)
+\]
+
+and an ordered mode is counted as **resolved** only when its lower split-quantile remains above this estimated noise floor.
+
+The estimator makes only the one-sided claim:
+
+\[
+r_{\mathrm{true}} \ge r_{\mathrm{resolved}}
+\]
+
+It does **not** claim that unresolved modes are absent.
+
+In this benchmark:
+
+- `r_resolved` did not exceed the known algebraic rank in any tested family;
+- the fraction of true low-rank structure resolved increased with sample size;
+- near-low-rank but mathematically full-rank systems were reported as having only a few **resolved** modes, without being called exactly low rank.
+
+At 5,000 samples per row, the median resolved fraction was:
+
+| True algebraic rank | Median fraction resolved |
+|---:|---:|
+| 2 | 100% |
+| 4 | 100% |
+| 8 | 87.5% |
+
+This is **not a formal confidence bound**. It is a benchmarked conservative diagnostic.
+
+## Reproduce
+
+Python 3.11+ is recommended.
+
+```bash
+git clone https://github.com/sgarcia87/finite-data-causal-emergence-stress-test.git
+cd finite-data-causal-emergence-stress-test
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+python src/final_emergence_stress_benchmark.py
+python scripts/make_figures.py
+```
+
+The main run regenerates the CSVs in the working directory. The committed `results/` directory contains the reference outputs used in this release.
+
+## Repository layout
+
+```text
+.
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── src/
+│   └── final_emergence_stress_benchmark.py
+├── scripts/
+│   └── make_figures.py
+├── results/
+│   ├── final_benchmark_representation_invariance.csv
+│   ├── final_benchmark_all_results.csv
+│   ├── final_benchmark_lowrank_summary.csv
+│   ├── final_benchmark_fullrank_summary.csv
+│   └── final_benchmark_publication_endpoints.csv
+├── assets/
+│   ├── fig1_representation_refinement.png
+│   ├── fig2_lowrank_resolved_fraction.png
+│   └── fig3_fullrank_resolved_modes.png
+├── docs/
+│   ├── METHODS.md
+│   ├── RESULTS.md
+│   └── CLAIMS_AND_LIMITATIONS.md
+├── archive/
+│   └── EXPLORATORY_HISTORY.md
+└── references.bib
+```
+
+## Figures
+
+### Exact behavior-preserving refinement
+
+![Representation refinement](assets/fig1_representation_refinement.png)
+
+### Resolved fraction in truly low-rank systems
+
+![Resolved fraction](assets/fig2_lowrank_resolved_fraction.png)
+
+### Resolved modes in full-rank systems
+
+![Full-rank resolved modes](assets/fig3_fullrank_resolved_modes.png)
+
+## Scope
+
+The current benchmark is deliberately small and controlled:
+
+- finite-state Markov chains;
+- observed dimension `N = 16`;
+- stratified row-wise transition sampling;
+- synthetic ground truth;
+- no claim of universal optimality for `r_resolved`.
+
+A strong next step would be a formal statistical treatment of resolved-mode lower bounds and an operational definition of when the unresolved spectral tail is negligible.
+
+## Relation to recent SVD-based causal emergence
+
+This repository is directly motivated by:
+
+> Zhang, J., Tao, R., Leong, K. H., Yang, M., & Yuan, B. (2025). **Dynamical reversibility and a new theory of causal emergence based on SVD.** *npj Complexity*, 2, 3.  
+> https://doi.org/10.1038/s44260-025-00028-0
+
+That work defines clear CE through exact rank deficiency and vague CE through a singular-value threshold. This benchmark focuses on the **finite-data inference problem**: the population TPM is rarely known exactly.
+
+A later extension of the SVD framework to Gaussian iterative systems is also relevant:
+
+> Liu, K., Pan, L., Wang, Z., Yang, M., Yuan, B., & Zhang, J. (2025). **Singular-value-decomposition-based causal emergence for Gaussian iterative systems.** *Physical Review E*, 112, 054225.  
+> https://doi.org/10.1103/mfct-sxn5
+
+## What this repository does *not* claim
+
+It does not claim that:
+
+- SVD-based causal emergence is incorrect;
+- Effective Information is invalid;
+- `r_resolved` is a finished estimator of causal emergence;
+- equal state cloning must be regarded as physically equivalent in every modeling context;
+- spectral rank alone determines whether a macroscale is scientifically meaningful.
+
+The claim is narrower: **finite-data inference requires more caution than exact-TPM definitions alone reveal.**
+
+## Status
+
+**Research benchmark / technical note — v1.0**
+
+The repository intentionally excludes exploratory results that failed later controls. See [`archive/EXPLORATORY_HISTORY.md`](archive/EXPLORATORY_HISTORY.md) for the methodological history.
+
+## License
+
+MIT License. See [`LICENSE`](LICENSE).
