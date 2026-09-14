@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Triadic Geometry Lab</title>
+<style>
+:root{color-scheme:light dark;--bg:#f6f7fb;--panel:#fff;--ink:#182033;--muted:#667085;--line:#cbd2df;--a:#5b5bd6;--b:#159a87;--c:#dd7b2d;--bad:#c54747;--soft:#eef0ff;--shadow:0 10px 34px rgba(30,40,70,.10)}
+@media(prefers-color-scheme:dark){:root{--bg:#11131a;--panel:#191d27;--ink:#f1f4fb;--muted:#aab2c3;--line:#3a4252;--a:#8f8cff;--b:#45ceb6;--c:#ffab5b;--bad:#ff7777;--soft:#252944;--shadow:0 10px 34px rgba(0,0,0,.3)}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.lab{max-width:1220px;margin:auto;padding:24px}.head{display:flex;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}.eyebrow{color:var(--a);font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.head h1{font-size:clamp(1.65rem,3vw,2.65rem);line-height:1.05;margin:.3rem 0}.head p{color:var(--muted);margin:0;max-width:720px}.tabs,.segmented{display:flex;gap:7px;flex-wrap:wrap}.tabs button,.segmented button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 13px;cursor:pointer;font:inherit}.tabs button[aria-selected="true"],.segmented button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--panel)}button:focus-visible,input:focus-visible{outline:3px solid var(--a);outline-offset:2px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px}.stage,.side{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.stage{min-width:0;overflow:hidden}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}.toolbar label{font-size:.8rem;color:var(--muted)}.canvas{height:540px;position:relative}.canvas svg{display:block;width:100%;height:100%}.hint{position:absolute;left:16px;bottom:12px;color:var(--muted);font-size:.78rem;background:var(--panel);padding:5px 8px;border-radius:7px}.side{padding:16px;display:flex;flex-direction:column;gap:13px}.side h2{font-size:1rem;margin:0}.metric{padding:12px;border:1px solid var(--line);border-radius:12px}.metric small{display:block;color:var(--muted);margin-bottom:3px}.metric strong{font-size:1.32rem}.control{border-top:1px solid var(--line);padding-top:12px}.control label{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted)}input[type=range]{width:100%;accent-color:var(--a)}.mode-dots{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:9px}.mode-dots i{aspect-ratio:1;border-radius:50%;background:var(--line)}.mode-dots i.on{background:var(--a)}.note{font-size:.84rem;color:var(--muted);margin:0}.verdict{padding:12px;border-left:4px solid var(--a);background:var(--soft);border-radius:5px;font-size:.86rem}.legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.78rem}.legend span{display:inline-flex;gap:6px;align-items:center}.sw{width:10px;height:10px;border-radius:50%;display:inline-block}.footer{color:var(--muted);font-size:.76rem;text-align:center;margin-top:14px}.node-label{font-size:11px;font-weight:800;pointer-events:none}.edge{stroke:var(--line);stroke-width:1.2;fill:none}.edge.strong{stroke:var(--a);stroke-width:2}.edge.fiber{stroke:var(--b);opacity:.52}.edge.micro{opacity:.25}.node{cursor:pointer;stroke:var(--panel);stroke-width:2}.family-halo{fill:var(--soft);stroke:var(--a);stroke-width:1.5}.title-svg{font-size:14px;font-weight:800;fill:var(--ink)}.sub-svg{font-size:11px;fill:var(--muted)}.badge-svg{font-size:11px;font-weight:800;fill:var(--ink)}
+@media(max-width:820px){.head{align-items:flex-start;flex-direction:column}.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.side h2,.verdict,.control:last-of-type{grid-column:1/-1}.canvas{height:500px}}@media(max-width:520px){.lab{padding:12px}.side{display:flex}.canvas{height:560px}.toolbar{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="lab" id="triadicLab">
+  <header class="head">
+    <div><div class="eyebrow">Causal-emergence stress tests</div><h1>Triadic Geometry Lab</h1><p>Una geometría exacta, tres niveles de descripción y varios diagnósticos que no deben confundirse.</p></div>
+    <nav class="tabs" aria-label="Vista principal">
+      <button data-tab="geometry" aria-selected="true">Geometría</button>
+      <button data-tab="isospectral" aria-selected="false">Isoespectral</button>
+      <button data-tab="logic" aria-selected="false">Mapa lógico</button>
+    </nav>
+  </header>
+  <section class="layout">
+    <article class="stage">
+      <div class="toolbar">
+        <div class="segmented" id="levels" aria-label="Nivel de descripción">
+          <button data-level="micro" aria-pressed="true">48 microestados</button>
+          <button data-level="family" aria-pressed="false">8 familias</button>
+          <button data-level="parity" aria-pressed="false">2 clases t</button>
+        </div>
+        <div class="legend"><span><i class="sw" style="background:var(--a)"></i>cubo Q₃</span><span><i class="sw" style="background:var(--b)"></i>fibra K₃,₃</span><span><i class="sw" style="background:var(--c)"></i>clase t</span></div>
+      </div>
+      <div class="canvas" id="canvas"><svg role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">Geometría triádica interactiva</title><desc id="svgDesc">Representación del grafo producto de 48 estados, sus ocho familias y dos clases de paridad.</desc></svg><div class="hint" id="hint">Pulsa un nodo para inspeccionarlo · cambia de nivel para colapsar la jerarquía</div></div>
+    </article>
+    <aside class="side" aria-live="polite">
+      <h2 id="panelTitle">Jerarquía Markoviana exacta</h2>
+      <div class="metric"><small>Estructura seleccionada</small><strong id="structure">Q₃ □ K₃,₃</strong></div>
+      <div class="metric"><small>Estados visibles</small><strong id="count">48</strong></div>
+      <div class="metric"><small>Cierre dinámico</small><strong id="closure">exacto</strong></div>
+      <div class="control" id="tauControl"><label><span>Escala τ</span><b id="tauLabel">0.4</b></label><input id="tau" type="range" min="0" max="2" step="1" value="1" aria-label="Escala tau"></div>
+      <div class="control" id="sampleControl"><label><span>Muestras por estado</span><b id="sampleLabel">500</b></label><input id="sample" type="range" min="0" max="2" step="1" value="1" aria-label="Muestras por estado"><div class="mode-dots" id="modeDots" aria-hidden="true"></div></div>
+      <div class="metric" id="resolvedMetric"><small>Modos espectrales resueltos</small><strong id="resolved">24 / 48</strong></div>
+      <p class="verdict" id="verdict">La geometría exacta sigue siendo <b>48 → 8 → 2</b>. El número de modos resueltos cambia con τ y con la muestra.</p>
+      <p class="note" id="inspect">Selecciona una familia o microestado para ver cómo pertenece simultáneamente a una fibra y a una clase t.</p>
+    </aside>
+  </section>
+  <p class="footer">Datos incorporados de los controles triádicos reproducibles del benchmark. El gráfico no infiere causalidad: separa estructura, cierre e inferencia.</p>
+</main>
+<script>
+(()=>{
+const root=document.getElementById('triadicLab'),svg=root.querySelector('svg'),canvas=document.getElementById('canvas');
+const state={tab:'geometry',level:'micro',tau:1,sample:1};
+const taus=[0.1,0.4,1.0],samples=[100,500,5000],resolved=[[48,48,48],[11,24,40],[1,4,8]];
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+function E(tag,attrs={},txt=''){const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(txt)n.textContent=txt;return n}
+function clear(){while(svg.lastChild&&svg.lastChild.tagName!=='desc'&&svg.lastChild.tagName!=='title')svg.removeChild(svg.lastChild)}
+function addLine(x1,y1,x2,y2,cls='edge'){svg.appendChild(E('line',{x1,y1,x2,y2,class:cls}))}
+function addText(x,y,t,cls='sub-svg',anchor='middle'){svg.appendChild(E('text',{x,y,class:cls,'text-anchor':anchor},t))}
+function dims(){const w=Math.max(300,canvas.clientWidth),h=canvas.clientHeight;svg.setAttribute('viewBox',`0 0 ${w} ${h}`);return{w,h}}
+function cubeCenters(w,h,scale=.22){const cx=w/2,cy=h/2-8,s=Math.min(w*scale,170),p=Math.min(w*.065,50);return Array.from({length:8},(_,i)=>{const a=i&1,b=(i>>1)&1,c=(i>>2)&1;return{x:cx+(a-.5)*2*s+(c-.5)*2*p,y:cy+(b-.5)*2*s*.58-(c-.5)*2*p*.72,bits:`${c}${b}${a}`,parity:(a+b+c)%2}})}
+function cubeEdges(centers,cls='edge strong'){for(let i=0;i<8;i++)for(let bit=0;bit<3;bit++){const j=i^(1<<bit);if(i<j)addLine(centers[i].x,centers[i].y,centers[j].x,centers[j].y,cls)}}
+function node(x,y,r,fill,label,onClick){const c=E('circle',{cx:x,cy:y,r,fill,class:'node',tabindex:'0',role:'button','aria-label':label});c.addEventListener('click',onClick);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onClick()}});svg.appendChild(c);return c}
+function inspectFamily(i,micro=null){const p=((i&1)+((i>>1)&1)+((i>>2)&1))%2;$('inspect').innerHTML=micro===null?`<b>Familia F${i}</b> · vértice ${i.toString(2).padStart(3,'0')} del cubo · clase t=${p}.`:`<b>F${i} · orden ${micro+1}</b> · uno de seis microestados en la fibra K₃,₃ · clase t=${p}.`}
+function drawGeometry(){const{w,h}=dims(),centers=cubeCenters(w,h,state.level==='micro'?.20:.25);cubeEdges(centers,state.level==='micro'?'edge micro':'edge strong');
+ if(state.level==='micro'){
+  const r=w<500?12:21;
+  centers.forEach((c,i)=>{svg.appendChild(E('circle',{cx:c.x,cy:c.y,r:r+9,class:'family-halo',opacity:'.34'}));const pts=Array.from({length:6},(_,j)=>({x:c.x+r*Math.cos(-Math.PI/2+j*Math.PI/3),y:c.y+r*Math.sin(-Math.PI/2+j*Math.PI/3)}));for(let a=0;a<3;a++)for(let b=3;b<6;b++)addLine(pts[a].x,pts[a].y,pts[b].x,pts[b].y,'edge fiber');pts.forEach((p,j)=>node(p.x,p.y,w<500?3.5:5,'var(--b)',`Familia ${i}, orden ${j+1}`,()=>inspectFamily(i,j)));addText(c.x,c.y+r+22,`F${i}`,'node-label')});
+ }else if(state.level==='family'){centers.forEach((c,i)=>{node(c.x,c.y,18,c.parity?'var(--c)':'var(--a)',`Familia ${i}`,()=>inspectFamily(i));addText(c.x,c.y+4,`F${i}`,'node-label')})
+ }else{const y=h/2-15,x1=w*.30,x2=w*.70;for(let k=-1;k<=1;k++)addLine(x1+28,y+k*7,x2-28,y+k*7,'edge strong');node(x1,y,48,'var(--a)','Clase t igual a cero',()=>{$('inspect').innerHTML='<b>Clase t=0</b> · reúne cuatro vértices del cubo, 24 microestados.'});node(x2,y,48,'var(--c)','Clase t igual a uno',()=>{$('inspect').innerHTML='<b>Clase t=1</b> · reúne cuatro vértices del cubo, 24 microestados.'});addText(x1,y+5,'t = 0','title-svg');addText(x2,y+5,'t = 1','title-svg');addText(w/2,y-18,'tasa macro 3','badge-svg');addText(w/2,y+34,'cierre exacto pese a rango micro 48','sub-svg')}
+}
+function drawIsospectral(){const{w,h}=dims(),narrow=w<600,panels=narrow?[{x:w/2,y:h*.27,label:'Partición exacta',bad:false},{x:w/2,y:h*.70,label:'Rotación isoespectral',bad:true}]:[{x:w*.27,y:h*.50,label:'Partición exacta',bad:false},{x:w*.73,y:h*.50,label:'Rotación isoespectral',bad:true}];
+ panels.forEach(p=>{const rr=Math.min(narrow?w*.22:w*.16,105),pts=Array.from({length:8},(_,i)=>({x:p.x+rr*Math.cos(-Math.PI/2+i*Math.PI/4),y:p.y+rr*Math.sin(-Math.PI/2+i*Math.PI/4)}));for(let i=0;i<8;i++)addLine(pts[i].x,pts[i].y,pts[(i+1)%8].x,pts[(i+1)%8].y,p.bad&&i===1?'edge strong':'edge');if(p.bad){addLine(pts[1].x,pts[1].y,pts[5].x,pts[5].y,'edge strong');addLine(pts[2].x,pts[2].y,pts[6].x,pts[6].y,'edge strong')}pts.forEach((q,i)=>node(q.x,q.y,10,p.bad&&[1,2,5,6].includes(i)?'var(--bad)':'var(--a)',`${p.label}, familia ${i}`,()=>{$('inspect').innerHTML=p.bad?'<b>Mismo espectro</b>, pero la partición designada presenta fuga entre bloques.':'<b>Referencia exacta</b>: la partición designada satisface el cierre.'}));addText(p.x,p.y-rr-24,p.label,'title-svg');addText(p.x,p.y+rr+30,p.bad?'residuo TV = 0.005079':'residuo ≈ 4.5 × 10⁻¹⁷','badge-svg')});
+ if(!narrow){addText(w/2,45,'Δ valores singulares = 2.22 × 10⁻¹⁶','title-svg');addText(w/2,65,'indistinguibles numéricamente','sub-svg')}else{addText(w/2,28,'Mismo espectro · cierre distinto','title-svg')}
+}
+function drawLogic(){const{w,h}=dims();const narrow=w<600;const items=narrow?[{x:w*.5,y:70,t:'Representación'},{x:w*.5,y:165,t:'Espectro'},{x:w*.5,y:260,t:'Modos resueltos'},{x:w*.5,y:355,t:'Cierre exacto'},{x:w*.5,y:450,t:'Ventaja causal'}]:[{x:w*.18,y:h*.48,t:'Representación'},{x:w*.38,y:h*.22,t:'Espectro'},{x:w*.67,y:h*.25,t:'Modos resueltos'},{x:w*.78,y:h*.62,t:'Cierre exacto'},{x:w*.42,y:h*.73,t:'Ventaja causal'}];
+ const links=narrow?[[0,1],[1,2],[2,3],[3,4]]:[[0,1],[1,2],[2,3],[3,4],[4,0],[1,3]];links.forEach(([a,b])=>{addLine(items[a].x,items[a].y,items[b].x,items[b].y,'edge strong');addText((items[a].x+items[b].x)/2+9,(items[a].y+items[b].y)/2-6,'≠','title-svg')});items.forEach((p,i)=>{node(p.x,p.y,narrow?28:39,i===3?'var(--b)':i===0?'var(--c)':'var(--a)',p.t,()=>{$('inspect').innerHTML=['Cambiar la <b>representación</b> puede cambiar el espectro sin cambiar la dinámica operacional.','El <b>espectro</b> no identifica por sí solo una partición ni certifica su cierre.','Los <b>modos resueltos</b> cuantifican distinguibilidad frente al ruido, no macroestados.','El <b>cierre</b> debe probarse para una partición concreta.','Una macrodescripción puede cerrar exactamente sin aportar necesariamente ventaja de EI.'][i]});addText(p.x,p.y+(narrow?47:61),p.t,'node-label')});addText(w/2,30,'Ninguna de estas propiedades sustituye a las demás','title-svg')
+}
+function updatePanel(){const tab=state.tab,level=state.level,r=resolved[state.tau][state.sample];$('tauLabel').textContent=taus[state.tau];$('sampleLabel').textContent=samples[state.sample];$('resolved').textContent=`${r} / 48`;document.querySelectorAll('#modeDots i').forEach((d,i)=>d.classList.toggle('on',i<Math.ceil(r/4)));
+ const geometry=tab==='geometry';$('levels').style.visibility=geometry?'visible':'hidden';$('tauControl').style.display=geometry?'block':'none';$('sampleControl').style.display=geometry?'block':'none';$('resolvedMetric').style.display=geometry?'block':'none';
+ if(geometry){$('panelTitle').textContent='Jerarquía Markoviana exacta';$('structure').textContent=level==='micro'?'Q₃ □ K₃,₃':level==='family'?'cubo Q₃':'cociente binario';$('count').textContent=level==='micro'?'48':level==='family'?'8':'2';$('closure').textContent='exacto';$('verdict').innerHTML='La geometría exacta sigue siendo <b>48 → 8 → 2</b>. El número de modos resueltos cambia con τ y con la muestra.'}
+ else if(tab==='isospectral'){$('panelTitle').textContent='Control isoespectral';$('structure').textContent='dos TPM';$('count').textContent='mismo espectro';$('closure').textContent='distinto';$('verdict').innerHTML='<b>Igualdad espectral ≠ igualdad estructural.</b> Conservar todos los valores singulares no conserva el cierre de una partición concreta.'}
+ else{$('panelTitle').textContent='Separaciones lógicas';$('structure').textContent='5 propiedades';$('count').textContent='no equivalentes';$('closure').textContent='se prueba aparte';$('verdict').innerHTML='Rango, partición, cierre, resolución estadística y ventaja causal son preguntas diferentes. Una sola cifra no puede sustituirlas.'}
+}
+function draw(){clear();if(state.tab==='geometry')drawGeometry();else if(state.tab==='isospectral')drawIsospectral();else drawLogic();updatePanel()}
+root.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{state.tab=b.dataset.tab;root.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-selected',x===b));$('inspect').textContent=state.tab==='geometry'?'Selecciona una familia o microestado para inspeccionarlo.':state.tab==='isospectral'?'Selecciona un nodo en cualquiera de los dos sistemas.':'Selecciona una propiedad para leer su interpretación.';draw()}));
+root.querySelectorAll('[data-level]').forEach(b=>b.addEventListener('click',()=>{state.level=b.dataset.level;root.querySelectorAll('[data-level]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()}));
+$('tau').addEventListener('input',e=>{state.tau=+e.target.value;updatePanel()});$('sample').addEventListener('input',e=>{state.sample=+e.target.value;updatePanel()});
+for(let i=0;i<12;i++)$('modeDots').appendChild(document.createElement('i'));
+new ResizeObserver(draw).observe(canvas);draw();
+})();
+</script>
+</body>
+</html>
