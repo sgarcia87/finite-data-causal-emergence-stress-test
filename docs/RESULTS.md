@@ -61,3 +61,28 @@ It is that finite data create an inferential asymmetry:
 - a weak mode being unresolved is not equivalent to evidence that the mode is absent.
 
 This distinction motivates one-sided reporting of resolved modes unless an explicit negligibility criterion for the unresolved spectral tail is supplied.
+
+## E. Triadic controls
+
+The isospectral rotation preserves singular values to within
+\(2.22\times10^{-16}\) while changing the designated eight-family closure
+residual from numerical zero to 0.005079 in worst-row total variation.
+
+The heat-kernel construction remains full rank but has the exact hierarchy
+\(48\rightarrow8\rightarrow2\). Across 100 finite-data repetitions per
+condition, median resolved-mode counts were:
+
+| \(\tau\) | 100 samples/state | 500 | 5,000 |
+|---:|---:|---:|---:|
+| 0.1 | 48 | 48 | 48 |
+| 0.4 | 11 | 24 | 40 |
+| 1.0 | 1 | 4 | 8 |
+
+The hierarchy itself does not change. Therefore resolved spectral dimension is
+not a macrostate-count estimator.
+
+With \(k=8\) supplied, the spectral clustering baseline recovers the
+designated families for \(\eta\le0.2\), fails at \(\eta=0.8\), and recovers the
+designated labels for the non-lumpable isospectral control. In the exploratory
+blind test, the eigengap baseline converges to \(k=4\), rather than a designated
+hierarchy level. Full interpretation is in `docs/TRIADIC_CONTROLS.md`.

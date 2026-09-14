@@ -1,0 +1,303 @@
+{
+  "scope": "Exact nested lumpability versus finite-data resolved spectral modes.",
+  "microstates": 48,
+  "edges": 144,
+  "micro_graph": "Q3 Cartesian-product K3,3",
+  "exact_nested_hierarchy": [
+    48,
+    8,
+    2
+  ],
+  "family8_quotient_laplacian": [
+    [
+      3,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      -1,
+      3,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      -1,
+      0,
+      3,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      -1,
+      -1,
+      3,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      -1,
+      0,
+      0,
+      0,
+      3,
+      -1,
+      -1,
+      0
+    ],
+    [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      3,
+      0,
+      -1
+    ],
+    [
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      3,
+      -1
+    ],
+    [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      3
+    ]
+  ],
+  "t2_quotient_laplacian": [
+    [
+      3,
+      -3
+    ],
+    [
+      -3,
+      3
+    ]
+  ],
+  "population": [
+    {
+      "tau": 0.1,
+      "partition": "micro48",
+      "states": 48,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 0.30119421191220236,
+      "population_closure_max_row_tv": 0.0,
+      "effective_information_bits": 2.9727066691927058,
+      "delta_ei_vs_micro_bits": 0.0,
+      "effectiveness_ei_over_log2_states": 0.5322697634601586
+    },
+    {
+      "tau": 0.1,
+      "partition": "family8",
+      "states": 8,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 0.30119421191220236,
+      "population_closure_max_row_tv": 1.2913932076474843e-15,
+      "effective_information_bits": 1.6842462969775567,
+      "delta_ei_vs_micro_bits": -1.288460372215149,
+      "effectiveness_ei_over_log2_states": 0.5614154323258522
+    },
+    {
+      "tau": 0.1,
+      "partition": "t2",
+      "states": 2,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 0.30119421191220236,
+      "population_closure_max_row_tv": 5.967448757360216e-16,
+      "effective_information_bits": 0.2297484487571276,
+      "delta_ei_vs_micro_bits": -2.742958220435578,
+      "effectiveness_ei_over_log2_states": 0.2297484487571276
+    },
+    {
+      "tau": 0.4,
+      "partition": "micro48",
+      "states": 48,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 0.008229747049020044,
+      "population_closure_max_row_tv": 0.0,
+      "effective_information_bits": 0.6808911510386345,
+      "delta_ei_vs_micro_bits": 0.0,
+      "effectiveness_ei_over_log2_states": 0.1219150801730029
+    },
+    {
+      "tau": 0.4,
+      "partition": "family8",
+      "states": 8,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 0.008229747049020044,
+      "population_closure_max_row_tv": 9.194034422677078e-16,
+      "effective_information_bits": 0.4529489714592398,
+      "delta_ei_vs_micro_bits": -0.22794217957939472,
+      "effectiveness_ei_over_log2_states": 0.15098299048641325
+    },
+    {
+      "tau": 0.4,
+      "partition": "t2",
+      "states": 2,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 0.008229747049020044,
+      "population_closure_max_row_tv": 2.498001805406602e-16,
+      "effective_information_bits": 0.005944677210647099,
+      "delta_ei_vs_micro_bits": -0.6749464738279874,
+      "effectiveness_ei_over_log2_states": 0.005944677210647099
+    },
+    {
+      "tau": 1.0,
+      "partition": "micro48",
+      "states": 48,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 6.144212353391563e-06,
+      "population_closure_max_row_tv": 0.0,
+      "effective_information_bits": 0.04669255471125942,
+      "delta_ei_vs_micro_bits": 0.0,
+      "effectiveness_ei_over_log2_states": 0.0083604061272086
+    },
+    {
+      "tau": 1.0,
+      "partition": "family8",
+      "states": 8,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 6.144212353391563e-06,
+      "population_closure_max_row_tv": 3.8163916471489756e-16,
+      "effective_information_bits": 0.03975770988103142,
+      "delta_ei_vs_micro_bits": -0.006934844830228,
+      "effectiveness_ei_over_log2_states": 0.013252569960343805
+    },
+    {
+      "tau": 1.0,
+      "partition": "t2",
+      "states": 2,
+      "micro_algebraic_rank": 48,
+      "micro_sigma_min": 6.144212353391563e-06,
+      "population_closure_max_row_tv": 1.1102230246251565e-16,
+      "effective_information_bits": 4.432116884889098e-06,
+      "delta_ei_vs_micro_bits": -0.04668812259437453,
+      "effectiveness_ei_over_log2_states": 4.432116884889098e-06
+    }
+  ],
+  "finite_summary": [
+    {
+      "tau": 0.1,
+      "samples_per_state": 100,
+      "valid_repeats": 100,
+      "median_resolved": 48.0,
+      "q05_resolved": 48.0,
+      "q95_resolved": 48.0,
+      "min_resolved": 47,
+      "max_resolved": 48
+    },
+    {
+      "tau": 0.1,
+      "samples_per_state": 500,
+      "valid_repeats": 100,
+      "median_resolved": 48.0,
+      "q05_resolved": 48.0,
+      "q95_resolved": 48.0,
+      "min_resolved": 48,
+      "max_resolved": 48
+    },
+    {
+      "tau": 0.1,
+      "samples_per_state": 5000,
+      "valid_repeats": 100,
+      "median_resolved": 48.0,
+      "q05_resolved": 48.0,
+      "q95_resolved": 48.0,
+      "min_resolved": 48,
+      "max_resolved": 48
+    },
+    {
+      "tau": 0.4,
+      "samples_per_state": 100,
+      "valid_repeats": 100,
+      "median_resolved": 11.0,
+      "q05_resolved": 10.0,
+      "q95_resolved": 13.0,
+      "min_resolved": 9,
+      "max_resolved": 13
+    },
+    {
+      "tau": 0.4,
+      "samples_per_state": 500,
+      "valid_repeats": 100,
+      "median_resolved": 24.0,
+      "q05_resolved": 23.0,
+      "q95_resolved": 25.0,
+      "min_resolved": 23,
+      "max_resolved": 25
+    },
+    {
+      "tau": 0.4,
+      "samples_per_state": 5000,
+      "valid_repeats": 100,
+      "median_resolved": 40.0,
+      "q05_resolved": 40.0,
+      "q95_resolved": 41.0,
+      "min_resolved": 40,
+      "max_resolved": 42
+    },
+    {
+      "tau": 1.0,
+      "samples_per_state": 100,
+      "valid_repeats": 100,
+      "median_resolved": 1.0,
+      "q05_resolved": 1.0,
+      "q95_resolved": 2.0,
+      "min_resolved": 1,
+      "max_resolved": 2
+    },
+    {
+      "tau": 1.0,
+      "samples_per_state": 500,
+      "valid_repeats": 100,
+      "median_resolved": 4.0,
+      "q05_resolved": 4.0,
+      "q95_resolved": 4.049999999999997,
+      "min_resolved": 4,
+      "max_resolved": 5
+    },
+    {
+      "tau": 1.0,
+      "samples_per_state": 5000,
+      "valid_repeats": 100,
+      "median_resolved": 8.0,
+      "q05_resolved": 8.0,
+      "q95_resolved": 8.0,
+      "min_resolved": 8,
+      "max_resolved": 9
+    }
+  ],
+  "interpretation": [
+    "The microscopic TPM is full rank for every finite tau tested.",
+    "The 8-state and 2-state partitions are exact for every tau.",
+    "Resolved-mode count changes with tau and sample size while the exact hierarchy does not.",
+    "Resolved spectral dimension is therefore not a macrostate-count estimator.",
+    "Neither exact lumpability nor normalized effectiveness establishes positive causal emergence in absolute EI."
+  ]
+}

@@ -45,3 +45,10 @@ Only the following idea survived:
 > Report positive evidence for **resolved modes** without converting unresolved modes into evidence of absence.
 
 That is the claim retained in v1.0.
+
+## v1.1 triadic blind partition discovery
+
+The blind eigengap and clustering experiment was designed after the exact
+triadic hierarchy had already been inspected. It is retained as an exploratory
+stress test, not as preregistered confirmation or a claim about all possible
+macrostate-discovery methods. Oracle-`k` runs are diagnostic controls only.
