@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software or benchmark, please cite it as below."
+title: "Finite-Data Stress Tests for Spectral Causal Emergence"
+version: 1.0.0
+date-released: 2026-09-14
+type: software
+license: "MIT"
+authors:
+  - given-names: "Sergi"
+    family-names: "Garcia Mecinas"
+abstract: >-
+  A reproducible benchmark examining what finite transition data can support
+  about spectral and rank-based causal-emergence claims. The benchmark studies
+  representation sensitivity, finite-sample rank fragility, forced spectral
+  cutoff behavior, and conservative one-sided resolved-mode inference.
+keywords:
+  - causal emergence
+  - complex systems
+  - Markov chains
+  - singular value decomposition
+  - spectral analysis
+  - finite-sample inference
+  - effective information
+  - reproducible research
+repository-code: "https://github.com/sgarcia87/finite-data-causal-emergence-stress-test"
+url: "https://github.com/sgarcia87/finite-data-causal-emergence-stress-test"
