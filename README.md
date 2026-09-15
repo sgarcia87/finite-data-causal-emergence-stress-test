@@ -28,6 +28,8 @@ Accordingly, this repository distinguishes:
 - **resolved-mode claims** — a conservative one-sided statement: *at least these modes are supported by the data*.
 - **partition claims** — whether a specified aggregation is dynamically closed,
   which is not determined by spectral rank alone.
+- **recovery claims** — whether an algorithm reproduces a known partition,
+  which does not by itself certify exact dynamical closure.
 
 ## What survived the stress tests
 
@@ -151,6 +153,30 @@ random mappings demonstrates exceptional structure relative to that ensemble;
 it does not certify exact closure or positive causal emergence. See
 [`docs/EI_MATCHED_CONTROLS.md`](docs/EI_MATCHED_CONTROLS.md).
 
+### 7. Exact recovery does not certify closure in an empirical codon model
+
+The synthetic constructions are complemented by an external-data audit of the
+restricted and unrestricted Empirical Codon Models of Kosiol, Holmes, and
+Goldman (2007). These 61-state substitution models were estimated from
+protein-coding sequence alignments rather than constructed by this repository.
+
+Three biological partitions—16 first-two-base codon boxes (`B16`), 20 amino
+acids (`AA20`), and 23 local translation blocks (`L23`)—had lower closure
+residual than all 2,000 matched-size random partitions in both models at every
+tested horizon. None closed exactly.
+
+In the unrestricted ECM, cardinality-conditioned spectral clustering recovered
+`AA20` exactly in all 30 seeded fits, while its closure residual remained
+nonzero. Therefore,
+
+\[
+\boxed{\text{exact partition recovery}\not\Rightarrow\text{exact dynamic closure}.}
+\]
+
+The original ECM paper already identified amino-acid affiliation as a major
+factor in codon evolution; the biological signal itself is not claimed as new.
+See [`docs/EMPIRICAL_ECM_AUDIT.md`](docs/EMPIRICAL_ECM_AUDIT.md).
+
 ## Reproduce
 
 Python 3.11+ is recommended.
@@ -172,6 +198,14 @@ python src/triadic_blind_discovery.py --output results/triadic
 python src/triadic_ei_matched_controls.py --output results/triadic
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_triadic_*.py'
 python scripts/make_triadic_figure.py
+
+python src/empirical_codon_audit.py \
+  --source-dir data/empirical_ecm \
+  --output results/empirical_ecm \
+  --controls 2000 \
+  --repeats 30 \
+  --seed 20260915
+PYTHONPATH=src python -m unittest -v tests/test_empirical_codon_audit.py
 ```
 
 The main run regenerates the CSVs in the working directory. The committed `results/` directory contains the reference outputs used in this release.
@@ -188,7 +222,8 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 │   ├── triadic_partition_recovery.py
 │   ├── triadic_exact_hierarchy.py
 │   ├── triadic_blind_discovery.py
-│   └── triadic_ei_matched_controls.py
+│   ├── triadic_ei_matched_controls.py
+│   └── empirical_codon_audit.py
 ├── scripts/
 │   ├── make_figures.py
 │   └── make_triadic_figure.py
@@ -198,7 +233,10 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 │   ├── final_benchmark_lowrank_summary.csv
 │   ├── final_benchmark_fullrank_summary.csv
 │   ├── final_benchmark_publication_endpoints.csv
-│   └── triadic/
+│   ├── triadic/
+│   └── empirical_ecm/
+├── data/
+│   └── empirical_ecm/
 ├── assets/
 │   ├── fig1_representation_refinement.png
 │   ├── fig2_lowrank_resolved_fraction.png
@@ -209,9 +247,12 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 │   ├── RESULTS.md
 │   ├── CLAIMS_AND_LIMITATIONS.md
 │   ├── TRIADIC_CONTROLS.md
-│   └── EI_MATCHED_CONTROLS.md
+│   ├── EI_MATCHED_CONTROLS.md
+│   ├── EMPIRICAL_ECM_PROTOCOL.md
+│   └── EMPIRICAL_ECM_AUDIT.md
 ├── tests/
-│   └── test_triadic_*.py
+│   ├── test_triadic_*.py
+│   └── test_empirical_codon_audit.py
 ├── archive/
 │   └── EXPLORATORY_HISTORY.md
 └── references.bib
@@ -241,9 +282,11 @@ The current benchmark is deliberately small and controlled:
 
 - finite-state Markov chains;
 - observed dimensions `N = 16` in the original benchmark and `N = 48` in the
-  triadic controls;
+  triadic controls, plus the 61-state empirical ECM audit;
 - stratified row-wise transition sampling;
-- synthetic ground truth;
+- synthetic ground truth in the original and triadic benchmarks;
+- externally estimated average evolutionary parameters in the ECM audit, not
+  raw molecular trajectories;
 - no claim of universal optimality for `r_resolved`.
 
 A strong next step would be a formal statistical treatment of resolved-mode lower bounds and an operational definition of when the unresolved spectral tail is negligible.
@@ -273,13 +316,17 @@ It does not claim that:
 - spectral rank alone determines whether a macroscale is scientifically meaningful;
 - exact lumpability implies positive causal emergence;
 - a valid macro-partition is unique;
-- the exploratory clustering baseline represents all discovery methods.
+- the exploratory clustering baseline represents all discovery methods;
+- exact recovery of a biological label partition establishes exact Markov
+  closure or a unique causal macroscale;
+- the ECM audit discovers a previously unknown biological organization of the
+  genetic code.
 
 The claim is narrower: **finite-data inference requires more caution than exact-TPM definitions alone reveal.**
 
 ## Status
 
-**Research benchmark / technical note — v1.2**
+**Research benchmark / technical note — v1.3**
 
 The repository intentionally excludes exploratory results that failed later controls. See [`archive/EXPLORATORY_HISTORY.md`](archive/EXPLORATORY_HISTORY.md) for the methodological history.
 

@@ -1,0 +1,34 @@
+ *** README 
+
+	Supplemental material for the article
+	
+	Kosiol,C., Holmes,I., Goldman,N., 2007.
+	An empirical codon model for protein sequence evolution
+         
+
+
+
+
+*** Components
+	
+	 
+MoreKappaModels.pdf  		Definition of further kappa models	
+
+
+ECMrest.dat	  		Instantaneous rate matrix of the 
+		  		restricted empirical codon model 
+
+
+ECMunrest.dat			Instantaneous rate matrix of the 
+		  		unrestricted empirical codon model
+
+
+ParameterValuesM0.txt   	Parameter values for the M0 model
+
+
+Table_lnL.txt           	List of log-likelihood values for the 
+				different codon models analyzed
+
+
+ProteinFamiliesSDT.txt  	List of the protein families analyzed to 
+				compare SDT and the empirical codon model 

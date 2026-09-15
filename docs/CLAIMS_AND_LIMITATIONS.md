@@ -33,6 +33,14 @@ A full-rank 48-state heat-kernel TPM admits the exact nested Markov hierarchy
 The number of resolved spectral modes changes with observation time and sample
 size while the exact triadic hierarchy remains unchanged.
 
+### Claim 8 — exact recovery does not certify exact closure
+
+In the externally estimated unrestricted Empirical Codon Model, a
+cardinality-conditioned spectral baseline recovers the canonical 20-amino-acid
+partition exactly while that partition retains a nonzero Markov-closure
+residual. The same partition is also more closure-coherent than every sampled
+matched-size random control.
+
 ## Claims explicitly *not* supported
 
 This repository does not establish that:
@@ -46,7 +54,11 @@ This repository does not establish that:
 - exact lumpability implies positive causal emergence;
 - a valid macro-partition is unique;
 - the exploratory triadic clustering baseline represents all possible
-  macrostate-discovery methods.
+  macrostate-discovery methods;
+- exact label recovery certifies exact Markov closure or a unique causal
+  macroscale;
+- the empirical ECM audit establishes a new biological organization or an
+  organism-specific molecular mechanism.
 
 ## Statistical limitations
 
@@ -56,11 +68,12 @@ A formal treatment would require a statistical theory for singular/eigenvalue in
 
 ## Benchmark limitations
 
-- synthetic TPMs;
+- predominantly synthetic TPMs, with one external empirical-model extension;
 - observed dimensions \(N=16\) and \(N=48\) in the two benchmark components;
 - row-stratified sampling;
 - a small set of full-rank control families;
-- no real-world dataset in the final claim;
+- the ECM extension uses average parameters estimated from biological sequence
+  alignments, not raw event-level molecular trajectories;
 - one highly symmetric 48-state construction in the triadic extension;
 - no theorem of blind macro-partition identifiability.
 

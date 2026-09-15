@@ -86,3 +86,23 @@ designated families for \(\eta\le0.2\), fails at \(\eta=0.8\), and recovers the
 designated labels for the non-lumpable isospectral control. In the exploratory
 blind test, the eigengap baseline converges to \(k=4\), rather than a designated
 hierarchy level. Full interpretation is in `docs/TRIADIC_CONTROLS.md`.
+
+## F. Empirical codon-model audit
+
+The external-data extension analyzes the restricted and unrestricted Empirical
+Codon Models of Kosiol, Holmes, and Goldman (2007). Across both models, five
+transition horizons, and the `B16`, `AA20`, and `L23` partitions, none of 2,000
+matched-size controls had equal or lower closure residual. None of the
+designated partitions was exactly closed.
+
+For `ECMunrest`, cardinality-conditioned spectral clustering recovered the
+20-amino-acid partition exactly in all 30 seeded fits while its closure residual
+remained between 0.00216 and 0.09228. This supplies an empirical-model instance
+of
+
+\[
+\text{exact recovery}\not\Rightarrow\text{exact dynamic closure}.
+\]
+
+The five horizons derive from one generator and are not independent datasets.
+See `docs/EMPIRICAL_ECM_AUDIT.md` for provenance and full interpretation.

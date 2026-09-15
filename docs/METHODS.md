@@ -216,3 +216,32 @@ non-trivial raw eigengap of the symmetrized training TPM, and then clusters the
 leading embedding. Oracle-\(k\) runs distinguish model-order selection from
 partition recovery. This baseline was designed after inspection of the exact
 hierarchy and is not preregistered or claimed to be optimal.
+
+## 13. Empirical codon-model audit
+
+The `ECMrest.dat` and `ECMunrest.dat` exchangeabilities and equilibrium
+frequencies are parsed directly from the official supplementary material of
+Kosiol, Holmes, and Goldman (2007). For codons \(i\ne j\),
+
+\[
+q_{ij}=s_{ij}\pi_j,
+\]
+
+with diagonal entries chosen so each row sums to zero. The generator is scaled
+to equilibrium mean rate one, and transition matrices are calculated as
+
+\[
+P(t)=\exp(tQ)
+\]
+
+for \(t\in\{0.01,0.05,0.10,0.50,1.00\}\).
+
+Closure of `B16`, `AA20`, and `L23` is compared with 2,000 random relabelings
+that preserve each partition's exact block-size multiset. Label-blind recovery
+uses either conditional jump profiles or the leading eigenvectors of the
+reversible similarity transform. The group count \(k\in\{16,20,23\}\) is
+supplied; it is not selected from the spectrum. Each condition uses 30 seeded
+k-means fits with `n_init=20`.
+
+The complete pre-execution design and claim ceiling are in
+`docs/EMPIRICAL_ECM_PROTOCOL.md`.

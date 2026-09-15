@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software or benchmark, please cite it as below."
 title: "Finite-Data Stress Tests for Spectral Causal Emergence"
-version: 1.2.0
+version: 1.3.0
 date-released: 2026-09-15
 type: software
 license: "MIT"
@@ -15,7 +15,9 @@ abstract: >-
   cutoff behavior, conservative one-sided resolved-mode inference, and exact
   triadic controls separating spectral rank from macro-partition validity,
   and matched-partition controls separating Effective Information from exact
-  Markovian closure.
+  Markovian closure. An external-data extension audits empirical codon
+  substitution models and separates exact label recovery from exact dynamic
+  closure.
 keywords:
   - causal emergence
   - complex systems
@@ -27,5 +29,7 @@ keywords:
   - reproducible research
   - lumpability
   - macrostate discovery
+  - empirical codon model
+  - genetic code
 repository-code: "https://github.com/sgarcia87/finite-data-causal-emergence-stress-test"
 url: "https://github.com/sgarcia87/finite-data-causal-emergence-stress-test"
