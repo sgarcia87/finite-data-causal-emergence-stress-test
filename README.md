@@ -8,6 +8,13 @@ This repository does **not** propose a new theory of causal emergence and does *
 
 The benchmark was motivated by the SVD-based framework of Zhang et al. (2025), where **clear causal emergence** occurs when `rank(P) < N` and **vague causal emergence** treats small singular values as approximately redundant.
 
+## Interactive visualization
+
+Explore the exact triadic geometry, its **48 → 8 → 2** hierarchy,
+finite-sample resolved modes, and the isospectral control:
+
+### [Open the Triadic Geometry Lab](https://sgarcia87.github.io/finite-data-causal-emergence-stress-test/)
+
 ## Main result
 
 The experiments consistently support an **asymmetry of inference**:
@@ -21,12 +28,6 @@ Accordingly, this repository distinguishes:
 - **resolved-mode claims** — a conservative one-sided statement: *at least these modes are supported by the data*.
 - **partition claims** — whether a specified aggregation is dynamically closed,
   which is not determined by spectral rank alone.
-
-## Interactive visualization
-
-Explore the exact triadic geometry, its **48 → 8 → 2** hierarchy, finite-sample resolved modes, and the isospectral control:
-
-### [Open the Triadic Geometry Lab](https://sgarcia87.github.io/finite-data-causal-emergence-stress-test/)
 
 ## What survived the stress tests
 
@@ -137,6 +138,19 @@ These controls do not identify a unique preferred macroscale and do not claim
 that exact lumpability is equivalent to causal emergence. See
 [`docs/TRIADIC_CONTROLS.md`](docs/TRIADIC_CONTROLS.md).
 
+### 6. Matched random partitions do not certify closure
+
+Using the same triadic models, the designated eight-family partition was
+compared with 2,000 balanced random partitions of identical group sizes. The
+designated partition exceeded every sampled control in macro EI and closure
+quality. However, the non-closed isospectral partition did so as well.
+
+Within the random ensembles, higher EI was associated with worse closure
+(Spearman correlations from -0.399 to -0.742). Thus, outperforming matched
+random mappings demonstrates exceptional structure relative to that ensemble;
+it does not certify exact closure or positive causal emergence. See
+[`docs/EI_MATCHED_CONTROLS.md`](docs/EI_MATCHED_CONTROLS.md).
+
 ## Reproduce
 
 Python 3.11+ is recommended.
@@ -155,6 +169,7 @@ python scripts/make_figures.py
 python src/triadic_partition_recovery.py --output results/triadic
 python src/triadic_exact_hierarchy.py --output results/triadic
 python src/triadic_blind_discovery.py --output results/triadic
+python src/triadic_ei_matched_controls.py --output results/triadic
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_triadic_*.py'
 python scripts/make_triadic_figure.py
 ```
@@ -172,7 +187,8 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 │   ├── final_emergence_stress_benchmark.py
 │   ├── triadic_partition_recovery.py
 │   ├── triadic_exact_hierarchy.py
-│   └── triadic_blind_discovery.py
+│   ├── triadic_blind_discovery.py
+│   └── triadic_ei_matched_controls.py
 ├── scripts/
 │   ├── make_figures.py
 │   └── make_triadic_figure.py
@@ -192,7 +208,8 @@ The main run regenerates the CSVs in the working directory. The committed `resul
 │   ├── METHODS.md
 │   ├── RESULTS.md
 │   ├── CLAIMS_AND_LIMITATIONS.md
-│   └── TRIADIC_CONTROLS.md
+│   ├── TRIADIC_CONTROLS.md
+│   └── EI_MATCHED_CONTROLS.md
 ├── tests/
 │   └── test_triadic_*.py
 ├── archive/
@@ -262,7 +279,7 @@ The claim is narrower: **finite-data inference requires more caution than exact-
 
 ## Status
 
-**Research benchmark / technical note — v1.1**
+**Research benchmark / technical note — v1.2**
 
 The repository intentionally excludes exploratory results that failed later controls. See [`archive/EXPLORATORY_HISTORY.md`](archive/EXPLORATORY_HISTORY.md) for the methodological history.
 

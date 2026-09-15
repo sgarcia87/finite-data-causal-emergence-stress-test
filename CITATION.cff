@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software or benchmark, please cite it as below."
 title: "Finite-Data Stress Tests for Spectral Causal Emergence"
-version: 1.1.0
-date-released: 2026-09-14
+version: 1.2.0
+date-released: 2026-09-15
 type: software
 license: "MIT"
 authors:
@@ -13,7 +13,9 @@ abstract: >-
   about spectral and rank-based causal-emergence claims. The benchmark studies
   representation sensitivity, finite-sample rank fragility, forced spectral
   cutoff behavior, conservative one-sided resolved-mode inference, and exact
-  triadic controls separating spectral rank from macro-partition validity.
+  triadic controls separating spectral rank from macro-partition validity,
+  and matched-partition controls separating Effective Information from exact
+  Markovian closure.
 keywords:
   - causal emergence
   - complex systems

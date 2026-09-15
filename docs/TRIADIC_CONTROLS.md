@@ -119,6 +119,20 @@ positive EI gain. Normalized effectiveness can increase for the eight-state
 quotient, illustrating why absolute and normalized objectives must be named
 separately.
 
+## Control 5: EI against matched partitions
+
+Using the same model family as Control 4, the designated eight-family mapping
+was compared with 2,000 balanced random partitions containing eight groups of
+six states. The designated partition exceeded all sampled controls in both
+macro EI and closure quality. However, the non-closed isospectral control did
+so as well. Moreover, within the random ensembles, higher EI was associated
+with worse closure (Spearman correlations from -0.399 to -0.742).
+
+Thus, a matched random-partition comparison can demonstrate exceptional
+structure but cannot certify exact closure. See
+[`EI_MATCHED_CONTROLS.md`](EI_MATCHED_CONTROLS.md) for the protocol, temporal
+null, results, and claim ceiling.
+
 ## Claim ceiling
 
 These controls do not show that:
@@ -137,6 +151,7 @@ From the repository root:
 python src/triadic_partition_recovery.py --output results/triadic
 python src/triadic_exact_hierarchy.py --output results/triadic
 python src/triadic_blind_discovery.py --output results/triadic
+python src/triadic_ei_matched_controls.py --output results/triadic
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_triadic_*.py'
 python scripts/make_triadic_figure.py
 ```

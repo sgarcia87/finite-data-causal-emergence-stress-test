@@ -16,6 +16,6 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m py_compile src/final_emergence_stress_benchmark.py scripts/make_figures.py
       - run: python scripts/make_figures.py
-      - run: python -m py_compile src/triadic_partition_recovery.py src/triadic_exact_hierarchy.py src/triadic_blind_discovery.py scripts/make_triadic_figure.py
+      - run: python -m py_compile src/triadic_partition_recovery.py src/triadic_exact_hierarchy.py src/triadic_blind_discovery.py src/triadic_ei_matched_controls.py scripts/make_triadic_figure.py
       - run: PYTHONPATH=src python -m unittest discover -s tests -p 'test_triadic_*.py'
       - run: python scripts/make_triadic_figure.py

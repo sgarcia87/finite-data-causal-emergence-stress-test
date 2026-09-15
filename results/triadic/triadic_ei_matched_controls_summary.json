@@ -1,0 +1,230 @@
+{
+  "status": "Exploratory protocol fixed before first run.",
+  "seed": 20260914,
+  "balanced_random_partitions_per_model": 2000,
+  "finite_null_repeats": 100,
+  "population": [
+    {
+      "model": "eta_0",
+      "micro_ei_bits": 0.8539524998678347,
+      "designated_closure_tv": 3.903127820947816e-18,
+      "designated_macro_ei_bits": 0.8539524998678348,
+      "designated_delta_ei_bits": 1.1102230246251565e-16,
+      "designated_closure_better_fraction": 1.0,
+      "designated_ei_better_fraction": 1.0,
+      "random_median_closure_tv": 0.27777764877950195,
+      "random_min_closure_tv": 0.18675201094235014,
+      "random_median_macro_ei_bits": 0.04147856277242328,
+      "random_max_macro_ei_bits": 0.14392434361546813,
+      "closure_of_max_ei_random": 0.3991956061648614,
+      "ei_of_min_closure_random": 0.01342268000937901,
+      "spearman_ei_vs_negative_closure": -0.7202302277870284,
+      "strong_alignment_abs_rho_ge_0_5": true
+    },
+    {
+      "model": "eta_0.02",
+      "micro_ei_bits": 0.8550918207899315,
+      "designated_closure_tv": 4.5102810375396984e-17,
+      "designated_macro_ei_bits": 0.8539524998678348,
+      "designated_delta_ei_bits": -0.001139320922096676,
+      "designated_closure_better_fraction": 1.0,
+      "designated_ei_better_fraction": 1.0,
+      "random_median_closure_tv": 0.27324065648444257,
+      "random_min_closure_tv": 0.17105456592246526,
+      "random_median_macro_ei_bits": 0.045132099593897815,
+      "random_max_macro_ei_bits": 0.148637358229966,
+      "closure_of_max_ei_random": 0.35932840517328457,
+      "ei_of_min_closure_random": 0.014248949709373694,
+      "spearman_ei_vs_negative_closure": -0.7355507603876902,
+      "strong_alignment_abs_rho_ge_0_5": true
+    },
+    {
+      "model": "eta_0.2",
+      "micro_ei_bits": 0.9581039769634154,
+      "designated_closure_tv": 1.0234868508263162e-16,
+      "designated_macro_ei_bits": 0.853952499867835,
+      "designated_delta_ei_bits": -0.10415147709558048,
+      "designated_closure_better_fraction": 1.0,
+      "designated_ei_better_fraction": 1.0,
+      "random_median_closure_tv": 0.24342249115435088,
+      "random_min_closure_tv": 0.1641333376738619,
+      "random_median_macro_ei_bits": 0.09867821887544223,
+      "random_max_macro_ei_bits": 0.18023915874399182,
+      "closure_of_max_ei_random": 0.31835080356939827,
+      "ei_of_min_closure_random": 0.06311297494490442,
+      "spearman_ei_vs_negative_closure": -0.6628225312056328,
+      "strong_alignment_abs_rho_ge_0_5": true
+    },
+    {
+      "model": "eta_0.8",
+      "micro_ei_bits": 2.361899155087565,
+      "designated_closure_tv": 5.941427905220564e-17,
+      "designated_macro_ei_bits": 0.8539524998678348,
+      "designated_delta_ei_bits": -1.5079466552197305,
+      "designated_closure_better_fraction": 1.0,
+      "designated_ei_better_fraction": 1.0,
+      "random_median_closure_tv": 0.25810865585666964,
+      "random_min_closure_tv": 0.20567518064111612,
+      "random_median_macro_ei_bits": 0.5756990828834156,
+      "random_max_macro_ei_bits": 0.7523354779227791,
+      "closure_of_max_ei_random": 0.2938659299972716,
+      "ei_of_min_closure_random": 0.5260938755420785,
+      "spearman_ei_vs_negative_closure": -0.3992451263112815,
+      "strong_alignment_abs_rho_ge_0_5": false
+    },
+    {
+      "model": "isospectral_broken_8partition",
+      "micro_ei_bits": 0.8552341795867148,
+      "designated_closure_tv": 0.005079165887234451,
+      "designated_macro_ei_bits": 0.8538929897985229,
+      "designated_delta_ei_bits": -0.0013411897881918655,
+      "designated_closure_better_fraction": 1.0,
+      "designated_ei_better_fraction": 1.0,
+      "random_median_closure_tv": 0.27429012689869936,
+      "random_min_closure_tv": 0.17998857219792913,
+      "random_median_macro_ei_bits": 0.04600930298379926,
+      "random_max_macro_ei_bits": 0.13285659576703623,
+      "closure_of_max_ei_random": 0.3381704246739444,
+      "ei_of_min_closure_random": 0.023898269126845076,
+      "spearman_ei_vs_negative_closure": -0.742027964506991,
+      "strong_alignment_abs_rho_ge_0_5": true
+    }
+  ],
+  "finite_null_summary": [
+    {
+      "model": "eta_0",
+      "samples_per_state": 100,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.32739504766932925,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.3700594312029065,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0",
+      "samples_per_state": 500,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.06931488588574625,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.06608007395755593,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0",
+      "samples_per_state": 5000,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.006569411160207983,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.0065055876455845305,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.02",
+      "samples_per_state": 100,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.3269695155351234,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.3718080536767988,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.02",
+      "samples_per_state": 500,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.06998251176211806,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.06671747431694186,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.02",
+      "samples_per_state": 5000,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.007719665985146451,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.00645914152116818,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.2",
+      "samples_per_state": 100,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.4240046538512026,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.372584450138435,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.2",
+      "samples_per_state": 500,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.1733245469092365,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.06617518752362442,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.2",
+      "samples_per_state": 5000,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.11065005404887152,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.0064738298675060535,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.8",
+      "samples_per_state": 100,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -1.7315148172395467,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.37095212360491686,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.8",
+      "samples_per_state": 500,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -1.571104375330459,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.06554025123434268,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "eta_0.8",
+      "samples_per_state": 5000,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -1.5144155521874343,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.006467874119700366,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "isospectral_broken_8partition",
+      "samples_per_state": 100,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.3265867803348769,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.37141851572947326,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "isospectral_broken_8partition",
+      "samples_per_state": 500,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.07039189716202993,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.06639490286653482,
+      "null_positive_delta_rate": 0.0
+    },
+    {
+      "model": "isospectral_broken_8partition",
+      "samples_per_state": 5000,
+      "independent_repeats": 100,
+      "median_observed_delta_ei_bits": -0.007861686060676554,
+      "observed_positive_delta_rate": 0.0,
+      "median_null_delta_ei_bits": -0.006488840569031045,
+      "null_positive_delta_rate": 0.0
+    }
+  ]
+}
